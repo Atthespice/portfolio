@@ -5,6 +5,7 @@ import { Marquee } from "../components/Marquee";
 import { CharReveal } from "../components/CharReveal";
 import { StackingProjects } from "../components/StackingProjects";
 import { heroTagline, aboutFull, services, featuredProjects, contacts } from "../content";
+import faceImage from "../assets/face.jpeg";
 
 export function Home() {
   return (
@@ -23,7 +24,7 @@ export function Home() {
           <h1 className="font-black uppercase leading-[0.95] text-silver" style={{ fontSize: "clamp(2.75rem, 15vw, 11rem)" }}>
             HI, I'M <span className="text-yellow" style={{ WebkitTextFillColor: "initial" }}>RICH</span>
           </h1>
-          <RMEmblem size={180} className="my-2" />
+          <RMEmblem size={240} photoSrc={faceImage} className="my-2" />
         </div>
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">

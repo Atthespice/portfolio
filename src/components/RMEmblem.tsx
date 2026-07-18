@@ -5,16 +5,19 @@ import { useReducedMotion } from "../lib/useReducedMotion";
 interface RMEmblemProps {
   size?: number;
   className?: string;
+  /** Personal photo/illustration clipped into the center circle. Falls back to the "RM" monogram when omitted. */
+  photoSrc?: string;
 }
 
 /**
- * The site's signature mark: an RM monogram in a dashed road-ring with signal-wave
- * arcs and yellow/blue orbit lines. Tracks the pointer within its own bounding box
- * and eases toward it (a "magnetic" hover) using spring-smoothed motion values —
- * cheaper than re-rendering on every mousemove since Framer Motion drives the
- * transform directly off the motion values.
+ * The site's signature mark: a dashed road-ring with signal-wave arcs and
+ * yellow/blue orbit lines, framing either the "RM" monogram or (when `photoSrc`
+ * is given) a circular-clipped personal photo. Tracks the pointer within its own
+ * bounding box and eases toward it (a "magnetic" hover) using spring-smoothed
+ * motion values — cheaper than re-rendering on every mousemove since Framer
+ * Motion drives the transform directly off the motion values.
  */
-export function RMEmblem({ size = 220, className = "" }: RMEmblemProps) {
+export function RMEmblem({ size = 220, className = "", photoSrc }: RMEmblemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
@@ -45,55 +48,73 @@ export function RMEmblem({ size = 220, className = "" }: RMEmblemProps) {
       style={{ x: springX, y: springY, width: size, height: size }}
       className={`relative flex items-center justify-center ${className}`}
     >
-      <svg viewBox="0 0 220 220" width={size} height={size} className="overflow-visible">
+      <svg viewBox="0 0 260 260" width={size} height={size} className="overflow-visible">
         <circle
-          cx="110"
-          cy="110"
-          r="96"
+          cx="130"
+          cy="130"
+          r="124"
           fill="none"
           stroke="var(--color-yellow)"
           strokeWidth="3"
-          strokeDasharray="10 14"
+          strokeDasharray="11 15"
           className={reducedMotion ? "" : "animate-[spin_40s_linear_infinite]"}
-          style={{ transformOrigin: "110px 110px" }}
+          style={{ transformOrigin: "130px 130px" }}
         />
         <circle
-          cx="110"
-          cy="110"
-          r="72"
+          cx="130"
+          cy="130"
+          r="102"
           fill="none"
           stroke="var(--color-blue)"
           strokeWidth="1.5"
           opacity="0.55"
           className={reducedMotion ? "" : "animate-[spin_28s_linear_infinite_reverse]"}
-          style={{ transformOrigin: "110px 110px" }}
+          style={{ transformOrigin: "130px 130px" }}
         />
         <path
-          d="M 40 150 Q 110 190 180 150"
+          d="M 44 176 Q 130 218 216 176"
           fill="none"
           stroke="var(--color-blue)"
           strokeWidth="2"
           opacity="0.4"
         />
         <path
-          d="M 46 60 Q 110 25 174 60"
+          d="M 52 68 Q 130 28 208 68"
           fill="none"
           stroke="var(--color-yellow)"
           strokeWidth="2"
           opacity="0.35"
         />
-        <text
-          x="110"
-          y="128"
-          textAnchor="middle"
-          fontFamily="var(--font-display)"
-          fontWeight={700}
-          fontSize="64"
-          className="text-silver"
-          fill="url(#emblemGradientFallback)"
-        >
-          RM
-        </text>
+        {photoSrc ? (
+          <>
+            <clipPath id="emblemPhotoClip">
+              <circle cx="130" cy="130" r="82" />
+            </clipPath>
+            <image
+              href={photoSrc}
+              x="48"
+              y="48"
+              width="164"
+              height="164"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#emblemPhotoClip)"
+            />
+            <circle cx="130" cy="130" r="82" fill="none" stroke="var(--color-border)" strokeWidth="1" />
+          </>
+        ) : (
+          <text
+            x="130"
+            y="148"
+            textAnchor="middle"
+            fontFamily="var(--font-display)"
+            fontWeight={700}
+            fontSize="64"
+            className="text-silver"
+            fill="url(#emblemGradientFallback)"
+          >
+            RM
+          </text>
+        )}
         <defs>
           <linearGradient id="emblemGradientFallback" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--color-silver-top)" />
