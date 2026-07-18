@@ -81,8 +81,6 @@ mid-page.
 
 These are placeholders by design — the spec calls them out as things you'll fill in:
 
-- **CV**: `public/cv/Rich_Maina_IT_Resume.pdf` is currently a placeholder PDF (opens fine,
-  says "replace me"). Swap in your real resume, same filename.
 - **Project screenshots**: drop images into `src/assets/projects/<slug>/cover.*` per
   `src/assets/projects/README.md`.
 - **Repo/live URLs**: a few projects have `repoUrl`/`liveUrl` set to `null` with an
@@ -92,6 +90,10 @@ These are placeholders by design — the spec calls them out as things you'll fi
   platforms (older Facebook/LinkedIn crawlers) render OG images more reliably as PNG. If
   you hit that, screenshot the SVG at 1200×630 and save it as `public/og-image.png`, then
   update the two `content="/og-image..."` meta tags in `index.html`.
+- **CV formatting**: `public/cv/Rich_Maina_IT_Resume.pdf` was rebuilt from the resume text
+  you shared (no original file was reachable on disk to copy byte-for-byte), styled to
+  read cleanly as a PDF. If you have the original file with your preferred exact layout,
+  just drop it in over this one, same filename — no code changes needed.
 
 ---
 
