@@ -26,19 +26,18 @@ pointer position relative to the emblem's own bounding box and ease the whole SV
 it — the "spring" is what gives it the soft magnetic-pull feel instead of snapping
 instantly. Disabled under `prefers-reduced-motion`.
 
-### Scroll-driven marquee
-`src/components/Marquee.tsx`. Rather than a CSS `@keyframes` loop (which runs on a timer,
-independent of the visitor), each row's horizontal position is a `useTransform` of the
-page's `scrollYProgress` — literally tied to how far down the page you've scrolled. The
-two rows map that same progress to opposite output ranges, producing the crossing effect.
-Falls back to a static grid under reduced motion.
+### Project grid (formerly a scroll-driven marquee)
+`src/components/Marquee.tsx`. This used to tie each row's horizontal position to
+`scrollYProgress` via `useTransform`, so the tiles drifted as you scrolled. That constant
+recalculation blurred on mobile scroll, so it's now a plain static grid: same tiles, no
+scroll listener, nothing to go fuzzy.
 
-### Stacking/scaling featured project cards
-`src/components/StackingProjects.tsx`. Each card is `position: sticky` with a small
-increasing `top` offset (28px per spec). A shared tall container drives one
-`useScroll`/`useTransform` per card, each mapped to a different slice of the scroll
-range, so later cards scale earlier ones down slightly (0.03 step) as they scroll past —
-the classic "stack of cards" effect. Falls back to a plain list under reduced motion.
+### Featured Work section (removed)
+The 3 featured projects used to render as sticky, scale-down stacking cards
+(`StackingProjects.tsx`, deleted) at the bottom of Home. They visually collided with each
+other on some viewports, so that section was replaced with a short line and two pill
+buttons, one to `/projects` and one to `/contact`. Full project detail lives on the
+Projects page, not duplicated on Home.
 
 ### Character-by-character reveal
 `src/components/CharReveal.tsx`. Uses Framer Motion's `staggerChildren` on a tree of

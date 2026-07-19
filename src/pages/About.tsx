@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Award, GraduationCap } from "lucide-react";
 import { aboutFull, techStack, certifications, education } from "../content";
 import { useReducedMotion } from "../lib/useReducedMotion";
+import aboutPhoto from "../assets/about-photo.jpeg";
 
 export function About() {
   const reducedMotion = useReducedMotion();
@@ -29,6 +30,24 @@ export function About() {
       <div className="relative mx-auto max-w-4xl px-4 py-16 sm:px-6">
         <h1 className="text-center text-4xl font-black uppercase text-silver sm:text-5xl">About me</h1>
         <p className="mx-auto mt-8 max-w-2xl text-center text-lg leading-relaxed text-mist/85">{aboutFull}</p>
+
+        <div className="relative mx-auto mt-12 flex max-w-xs flex-col items-center">
+          <div
+            className="pointer-events-none absolute -inset-10 rounded-[2.5rem] opacity-70 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle at 25% 20%, color-mix(in srgb, var(--color-yellow) 45%, transparent), transparent 60%), radial-gradient(circle at 78% 82%, color-mix(in srgb, var(--color-blue) 45%, transparent), transparent 55%)",
+            }}
+          />
+          <div className="glass-panel relative rounded-[2rem] border-2 border-white/10 p-1.5">
+            <img
+              src={aboutPhoto}
+              alt="Rich Maina"
+              className="aspect-[4/5] w-64 rounded-[1.6rem] object-cover sm:w-72"
+            />
+          </div>
+          <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-yellow">Meet the man himself</p>
+        </div>
 
         <motion.section {...sideReveal(true)} className="mt-16">
           <h2 className="text-sm font-bold uppercase tracking-widest text-yellow">Skills &amp; tech stack</h2>

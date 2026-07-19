@@ -92,8 +92,8 @@ freelance work."  *(No attachment mention anywhere.)*
 1. **Web Development** — Full-stack builds with React, Vite, Node.js and Supabase — from
    student registration systems to REST and SMS API integrations that businesses run on.
 2. **Networking & ISP Setup** — MikroTik RouterOS configuration, LAN design, cabling and
-   switch deployment. I design, install and operate — including a live 30-user, 200 Mbps
-   building network.
+   switch deployment. I design, install and operate networks, including a live 30-user,
+   300 Mbps building network with full Wi-Fi distribution.
 3. **IT Support** — Hardware and software diagnostics, OS installation and maintenance,
    and patient first-line user support that keeps people working instead of waiting.
 4. **Brand & Graphic Design** — Brand identities, vehicle wrap mockups and marketing
@@ -126,11 +126,13 @@ labeled "Live link coming soon". Owner will fill URLs later.
    by a 40-page IEEE/ISO-standard SRS.
    Stack: React, Vite, Supabase (PostgreSQL, Auth), Africa's Talking SMS. Live: TBD.
 
-2. **Residential ISP — 3 Floors, 30 Users** — Live infrastructure (featured)
-   Designed, installed, and operate a building-wide internet service on a 200 Mbps
-   uplink: MikroTik hEX (DHCP, NAT, firewall), three cascaded switches on a structured
-   192.168.10.0/24 subnet, with ongoing first-line support. Operating since Jan 2025.
-   Stack: MikroTik RouterOS, LAN design, IP subnetting. (No repo/live link — show a
+2. **Residential ISP: 3 Floors, 30 Users** — Live infrastructure (featured)
+   Designed, installed, and operate building-wide internet and Wi-Fi infrastructure on a
+   300 Mbps uplink: MikroTik hEX (DHCP, NAT, firewall), three cascaded switches, and
+   distributed Wi-Fi access points across all floors on a structured 192.168.10.0/24
+   subnet, with ongoing first-line support. A growing residential ISP operation, live
+   since Jan 2025.
+   Stack: MikroTik RouterOS, LAN design, IP subnetting. (No repo/live link: show a
    "Live since 2025" badge instead of the button.)
 
 3. **Katiba OS** — Group personal project (featured)
@@ -170,6 +172,15 @@ labeled "Live link coming soon". Owner will fill URLs later.
    social media management for two Nairobi institutions (2024 – present).
    Stack: Photoshop, Lightroom, Premiere Pro, Canva. (Gallery-style card; no repo button.)
 
+8. **Unadoo** — Group · Personal build (in development)
+   A local-first, offline Android app that parses M-Pesa SMS into a categorized expense
+   ledger, tracks self-defined habits on a calendar, and mines both datasets for
+   effect-size-gated spend/habit correlations. No cloud, no account, nothing leaves the
+   phone. Sideloaded by design, since SMS-read permissions rule out Play Store
+   distribution. Full spec in `UNADOO_PLAN.md` in the Unadoo project folder (not this repo).
+   Stack: Flutter, Dart, SQLite (drift), fl_chart, local_auth, WorkManager. Badge:
+   "In development" in place of repo/live buttons.
+
 > **Removed per owner:** plp-final-project repo. Do not list it.
 
 ## 7. Tech stack (About page, grouped)
@@ -177,6 +188,7 @@ labeled "Live link coming soon". Owner will fill URLs later.
 - **Frontend:** React, Vite, TypeScript, JavaScript, HTML/CSS, Tailwind CSS, Framer Motion
 - **Backend & data:** Node.js, Express, MongoDB, Supabase (PostgreSQL, Auth), SQLite, REST APIs, Zod
 - **Integrations:** Africa's Talking SMS, Safaricom Daraja (M-Pesa), OpenAI API
+- **Mobile:** Flutter, Dart, SQLite (drift), fl_chart, local_auth
 - **DevOps & testing:** Docker, Git/GitHub, Vercel, PWA/service workers, Vitest, Playwright
 - **Networking:** MikroTik RouterOS (DHCP, NAT, firewall, bandwidth mgmt), LAN design & cabling, IP subnetting, switch deployment
 - **Creative:** Photoshop, Lightroom, Premiere Pro, Canva
@@ -188,12 +200,14 @@ labeled "Live link coming soon". Owner will fill URLs later.
 ### Home
 Jack-spec skeleton adapted: full-viewport hero (navbar → giant gradient "HI, I'M RICH"
 with "RICH" in yellow → RM emblem with magnetic hover → bottom bar: tagline left,
-Contact button right). Then the dual-row scroll-driven marquee (opposite directions,
-tiles per §4). Then about teaser with character-by-character scroll reveal + link to
-/about. Then the white Services sheet (rounded top, 5 numbered items). Then 3 featured
-projects as sticky-stacking scale-down cards (Framer Motion useScroll/useTransform,
-scale step 0.03, offset 28px), pulled up over the white sheet with rounded top. CTA
-footer to /contact.
+Contact button right). Then a static grid of project tiles (per §4; originally a
+dual-row scroll-driven marquee, replaced after it read fuzzy on mobile scroll). Then
+about teaser with character-by-character scroll reveal + link to /about. Then the white
+Services sheet (rounded top, 5 numbered items). Then, pulled up over the white sheet with
+a rounded top: a short "still under construction down here" line and two pill buttons,
+one to /projects (with a building icon) and one to /contact, replacing the original
+sticky-stacking scale-down project cards, which collided with each other at the bottom
+of the page.
 
 ### Projects
 Header + filterable grid (all 7 items). Cards use §4 art treatment, tech-tag chips,

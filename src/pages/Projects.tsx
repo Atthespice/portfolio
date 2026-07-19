@@ -15,7 +15,7 @@ export function Projects() {
       <div className="text-center">
         <h1 className="text-4xl font-black uppercase text-silver sm:text-5xl">Projects</h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-mist/70">
-          Client work, live infrastructure, academic builds and freelance collateral — filter by category.
+          Client work, live infrastructure, academic builds and freelance collateral. Filter by category.
         </p>
       </div>
 

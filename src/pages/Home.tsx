@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Building2 } from "lucide-react";
 import { RMEmblem } from "../components/RMEmblem";
 import { Marquee } from "../components/Marquee";
 import { CharReveal } from "../components/CharReveal";
-import { StackingProjects } from "../components/StackingProjects";
-import { heroTagline, aboutFull, services, featuredProjects, contacts } from "../content";
+import { heroTagline, aboutFull, services, contacts } from "../content";
 import faceImage from "../assets/face.jpeg";
 
 export function Home() {
@@ -64,7 +63,7 @@ export function Home() {
           <ol className="mt-10 flex flex-col gap-8">
             {services.map((service, index) => (
               <li key={service.title} className="flex gap-5 border-b border-black/10 pb-8 last:border-0">
-                <span className="text-2xl font-black text-yellow">
+                <span className="text-2xl font-black text-blue">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -77,18 +76,25 @@ export function Home() {
         </div>
       </section>
 
-      {/* Featured projects, pulled up over the white sheet with a rounded top edge, §8 */}
-      <section className="relative -mt-16 rounded-t-[60px] bg-ink px-0 pb-24 pt-16">
-        <h2 className="mb-10 text-center text-3xl font-black uppercase text-silver sm:text-4xl">Featured Work</h2>
-        <StackingProjects projects={featuredProjects} />
-
-        <div className="mt-16 text-center">
+      {/* Redirect to the Projects page instead of stacking full project cards here,
+          which used to overlap awkwardly at the bottom of the page. */}
+      <section className="relative -mt-16 rounded-t-[60px] bg-ink px-4 py-24 text-center sm:px-6">
+        <p className="text-sm font-semibold uppercase tracking-widest text-blue">Still under construction down here</p>
+        <h2 className="mt-3 text-3xl font-black uppercase text-silver sm:text-4xl">The real work lives on the Projects page</h2>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            to="/projects"
+            className="flex min-h-11 flex-shrink-0 items-center gap-2 rounded-full border-2 border-yellow px-8 py-4 text-base font-semibold text-yellow transition-colors hover:bg-yellow hover:text-ink"
+          >
+            <Building2 size={20} aria-hidden />
+            Projects
+          </Link>
           <Link
             to="/contact"
-            className="inline-flex min-h-11 flex-shrink-0 items-center gap-2 rounded-full bg-yellow px-8 text-sm font-semibold text-ink transition-opacity hover:opacity-90"
+            className="flex min-h-11 flex-shrink-0 items-center gap-2 rounded-full bg-yellow px-8 text-sm font-semibold text-ink transition-opacity hover:opacity-90"
           >
             <Mail size={16} aria-hidden />
-            Let's talk — {contacts.email}
+            Let's talk: {contacts.email}
           </Link>
         </div>
       </section>

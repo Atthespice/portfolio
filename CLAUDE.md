@@ -45,9 +45,18 @@ palette change is a one-file edit.
 - Card grids collapse to one column below 640px.
 - Visible `:focus-visible` outline on every interactive element (set globally in
   `index.css`, don't override it away).
-- `prefers-reduced-motion: reduce` must disable marquee drift, char-by-char reveal, and
-  card scaling — see the `useReducedMotion()` hook (`src/lib/useReducedMotion.ts`) and use
-  it in any new animated component instead of assuming motion is always wanted.
+- `prefers-reduced-motion: reduce` must disable char-by-char reveal, the RM emblem's
+  magnetic hover, and project-card hover tilt — see the `useReducedMotion()` hook
+  (`src/lib/useReducedMotion.ts`) and use it in any new animated component instead of
+  assuming motion is always wanted. (The project marquee and the old stacking Featured
+  Work cards were removed for being fuzzy/collision-prone on mobile — see below.)
+
+## Copy style
+
+Never use an em dash as a mid-sentence separator or pause in visitor-facing text (hero
+copy, bios, descriptions, button labels). It reads as unprofessional, AI-generated
+typography. Use a period, comma, or colon, or restructure the sentence instead. This does
+not apply to code comments or developer-facing docs like this file.
 
 ## Project images
 

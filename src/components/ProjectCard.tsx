@@ -96,11 +96,13 @@ export function ProjectCard({ project, variant = 0, size = "default" }: ProjectC
               </a>
             )}
 
-            {project.badge ? (
+            {project.badge && (
               <span className="flex min-h-11 flex-shrink-0 items-center gap-2 rounded-full border border-blue/50 bg-blue/10 px-4 text-sm font-medium text-blue">
                 {project.badge}
               </span>
-            ) : project.liveUrl ? (
+            )}
+
+            {project.liveUrl ? (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -110,14 +112,14 @@ export function ProjectCard({ project, variant = 0, size = "default" }: ProjectC
                 <ExternalLink size={16} aria-hidden />
                 Live Project
               </a>
-            ) : (
+            ) : !project.badge ? (
               <span
                 aria-disabled="true"
                 className="flex min-h-11 flex-shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-border px-4 text-sm font-medium text-mist/40"
               >
                 Live link coming soon
               </span>
-            )}
+            ) : null}
           </div>
         )}
       </div>

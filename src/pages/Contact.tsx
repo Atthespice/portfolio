@@ -5,7 +5,7 @@ import { GithubMark } from "../components/icons/GithubMark";
 const rows = [
   { icon: Mail, label: contacts.email, href: `mailto:${contacts.email}` },
   { icon: Phone, label: contacts.phone, href: `tel:${contacts.phone.replace(/\s+/g, "")}` },
-  { icon: GithubMark, label: "GitHub — Atthespice", href: contacts.github },
+  { icon: GithubMark, label: "GitHub: Atthespice", href: contacts.github },
   { icon: MapPin, label: contacts.location, href: undefined },
 ];
 
