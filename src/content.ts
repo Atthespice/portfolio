@@ -21,20 +21,40 @@ export interface Project {
   ownerNote?: string;
 }
 
-export const heroTagline =
-  "A full-stack developer and creative technologist building software, networks, and brands that businesses in Nairobi run on.";
+export type ProblemStepIcon = "write" | "match" | "send";
 
-export const aboutFull =
-  "I'm Mwangi Rich Maina, a full-stack developer, network operator, and designer based in " +
-  "Nairobi. I currently operate a live 30-user residential internet service on MikroTik " +
-  "infrastructure and am building a complete management information system for a real " +
-  "driving school client. I'm a certified full-stack developer (Safaricom Power Learn " +
-  "Project) with cybersecurity training in progress. What sets my work apart is planning: " +
-  "I take a client's problem end-to-end, scoping it properly, building it well, and " +
-  "communicating clearly at every step. Big ideas, disciplined execution.";
+export const problemBox = {
+  title: "What's slowing your work down?",
+  intro: "Tell me about the job that eats your day. It takes a minute, and you don't need to open your email.",
+  steps: [
+    { icon: "write", title: "Describe it in plain words", text: "No forms, no jargon. Just what's slow or annoying." },
+    { icon: "match", title: "See what I've already built", text: "Projects that solved something similar pop up as you type." },
+    { icon: "send", title: "Send it in one tap", text: "It lands in my inbox. Leave a contact only if you want a reply." },
+  ] satisfies { icon: ProblemStepIcon; title: string; text: string }[],
+  placeholder: "e.g. We take orders on WhatsApp and keep losing track of who paid",
+  matchesTitle: "Things I've already built that might help:",
+  contactLabel: "Want a reply? Leave a phone number or email (optional)",
+  contactPlaceholder: "0712 345 678 or you@example.com",
+  send: "Send it to Rich",
+  sending: "Sending...",
+  sent: "Got it, thank you. I read every one.",
+  sentWithContact: "Got it, thank you. I'll be in touch.",
+  error: "That didn't go through.",
+  privacy: "Goes straight to my inbox. Nothing is shared.",
+};
+
+export const homeCopy = {
+  aboutTeaser: "I find the slow, messy way something gets done, and build the app that makes it fast.",
+  servicesTitle: "What I can do for you",
+  journeyEyebrow: "12 stops and counting",
+  journeyTitle: "Take the full journey",
+};
 
 export const footerLine =
   "Ambitious by nature and methodical by practice. Open to freelance work.";
+
+export const contactIntro =
+  "Got a job that still runs on paper, phone calls, or a very busy WhatsApp group? Tell me what's slow, and I'll tell you how I'd fix it.";
 
 export const contacts = {
   email: "richmaina0@gmail.com",
@@ -50,35 +70,31 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Web Development",
+    title: "Apps & websites",
     description:
-      "Full-stack builds with React, Vite, Node.js and Supabase, from student registration " +
-      "systems to REST and SMS API integrations that businesses run on.",
+      "If your business runs on a notebook and a WhatsApp group, I'll build the system that runs it " +
+      "instead: websites and web apps with M-Pesa and SMS built in.",
   },
   {
-    title: "Networking & ISP Setup",
+    title: "Internet & Wi-Fi setup",
     description:
-      "MikroTik RouterOS configuration, LAN design, cabling and switch deployment. I design, " +
-      "install and operate networks, including a live 30-user, 300 Mbps building network " +
-      "with full Wi-Fi distribution.",
+      "Routers, cables, and Wi-Fi that reaches every room. I built, and still run, a network that " +
+      "keeps 30 people online across three floors.",
   },
   {
-    title: "IT Support",
+    title: "Tech support",
     description:
-      "Hardware and software diagnostics, OS installation and maintenance, and patient " +
-      "first-line user support that keeps people working instead of waiting.",
+      "Slow laptop, broken install, confusing setup. I fix it and explain it, so you can get back to work.",
   },
   {
-    title: "Brand & Graphic Design",
+    title: "Branding & design",
     description:
-      "Brand identities, vehicle wrap mockups and marketing collateral in Photoshop, " +
-      "Lightroom and Canva. Visuals built to be remembered on the street.",
+      "Logos, posters, and vehicle wraps people remember, made in Photoshop, Lightroom, and Canva.",
   },
   {
-    title: "Social Media & Content",
+    title: "Social media & content",
     description:
-      "Planning, photography, videography and page management that grow engagement. " +
-      "Currently running official pages for two Nairobi institutions.",
+      "Photos, videos, and a posting plan that keeps a page alive. I run the pages for two Nairobi institutions.",
   },
 ];
 
@@ -117,11 +133,39 @@ export const techStack: TechGroup[] = [
   { title: "Frontend", items: ["React", "Vite", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS", "Framer Motion"] },
   {
     title: "Backend & data",
-    items: ["Node.js", "Express", "MongoDB", "Supabase (PostgreSQL, Auth)", "SQLite", "REST APIs", "Zod"],
+    items: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Supabase (PostgreSQL, Auth)",
+      "SQLite",
+      "REST APIs",
+      "Zod",
+      "PHP",
+      "MySQL/MariaDB",
+      "PDO",
+      "Guzzle",
+    ],
   },
-  { title: "Integrations", items: ["Africa's Talking SMS", "Safaricom Daraja (M-Pesa)", "OpenAI API"] },
+  {
+    title: "Integrations",
+    items: ["Africa's Talking SMS", "WhatsApp Business API", "Safaricom Daraja (M-Pesa)", "OpenAI API"],
+  },
   { title: "Mobile", items: ["Flutter", "Dart", "SQLite (drift)", "fl_chart", "local_auth"] },
-  { title: "DevOps & testing", items: ["Docker", "Git/GitHub", "Vercel", "PWA/service workers", "Vitest", "Playwright"] },
+  {
+    title: "DevOps & testing",
+    items: [
+      "Docker",
+      "Git/GitHub",
+      "Vercel",
+      "PWA/service workers",
+      "Vitest",
+      "Playwright",
+      "Python",
+      "pytest",
+      "GitHub Actions",
+    ],
+  },
   {
     title: "Networking",
     items: ["MikroTik RouterOS (DHCP, NAT, firewall, bandwidth mgmt)", "LAN design & cabling", "IP subnetting", "Switch deployment"],
@@ -287,6 +331,449 @@ export const projects: Project[] = [
     ownerNote:
       "Deployment Protection was disabled on this URL 2026-07-19, confirmed working: it loads the real landing page, not a Vercel login screen.",
   },
+  {
+    slug: "wealth-track",
+    name: "Wealth Track",
+    category: "Group",
+    role: "Personal build (in active build)",
+    description:
+      "Personal, single-user finance PWA. Reverses a plan from a financial-freedom target, splits every " +
+      "income by an adaptive ratio, logs each allocation to a permanent ledger, and separates Kenyan " +
+      "from global investment research. Fed by Unadoo's own expense export.",
+    stack: ["PHP", "MySQL/MariaDB", "React", "Vite", "TypeScript", "Tailwind CSS"],
+    repoUrl: null,
+    liveUrl: null,
+    featured: false,
+    badge: "Personal & private, in build",
+    ownerNote: "No public live link by design: handles real personal financial data. Repo is private.",
+  },
+  {
+    slug: "dobi-go",
+    name: "Dobi Go",
+    category: "Client",
+    role: "Client · Live pilot (Zimmerman, Nairobi)",
+    description:
+      "Pickup-and-delivery laundry platform. A customer PWA with phone/OTP sign-in and live order " +
+      "tracking, an ops console with a weather-driven sun-dry estimate, and a delivery-agent app where " +
+      "a drop-off closes only on photo evidence plus a real-time M-Pesa payment.",
+    stack: ["PHP", "MySQL", "PDO", "Guzzle", "PWA", "WhatsApp Business API", "Safaricom Daraja (M-Pesa)"],
+    repoUrl: null,
+    liveUrl: null,
+    featured: false,
+    badge: "Live pilot, Zimmerman",
+    ownerNote: "No public live link: real customer orders and payments. Not yet pushed to a GitHub repo.",
+  },
+  {
+    slug: "loophole",
+    name: "LoopHole",
+    category: "Group",
+    role: "Group · Hackathon build (feature-complete)",
+    description:
+      "Breaks a security guard function before an attacker does. Takes a check meant to block bad " +
+      "input, uses an AI model to find an input that slips past it, proves the break is real by " +
+      "running the code, and shows the one line that closes the hole.",
+    stack: ["Python", "pytest", "GitHub Actions"],
+    repoUrl: "https://github.com/Atthespice/LoopHole",
+    liveUrl: null,
+    featured: false,
+    badge: "Run locally, see README",
+  },
+  {
+    slug: "track-my-kid",
+    name: "TrackMyKid",
+    category: "Client",
+    role: "Client · Live product (Jendie Automobiles)",
+    description:
+      "Shows Kenyan parents exactly where the school van is and sends an instant alert the moment " +
+      "their child boards, arrives, or is dropped home.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    repoUrl: null,
+    liveUrl: "https://trackmykid.co.ke",
+    featured: false,
+  },
 ];
 
 export const projectCategories: ProjectCategory[] = ["Client", "Group", "Academic", "Infrastructure", "Freelance"];
+
+
+// --- "A world through my lens": the globe section right after the Home hero. ---
+
+export type HeroCalloutIcon = "apps" | "ai" | "place";
+
+export const worldSection = {
+  title: "A world through my lens",
+  globeLabel: "Start the journey: see everything I've built",
+  tapTitle: "Tap the globe",
+  tapText: "Fly into my projects",
+  problemButton: "Tell me your problem",
+  cta: "See what I've built",
+  callouts: [
+    { icon: "apps", title: "Apps for real problems", text: "Rent, laundry, school vans" },
+    { icon: "ai", title: "AI that does the busywork", text: "A person always has the final say" },
+    { icon: "place", title: "Built in Nairobi", text: "For Kenyan businesses first" },
+  ] satisfies { icon: HeroCalloutIcon; title: string; text: string }[],
+};
+
+// --- Story: the road map on /story. Plain, first-person wording throughout. ---
+// See NARRATIVE_REVAMP_SPEC.md for the concept this implements.
+
+export type ScreenshotStatus = "ready" | "pending" | "text-only";
+export type ChapterStatus = "live" | "building" | "done";
+
+export const chapterStatusLabels: Record<ChapterStatus, string> = {
+  live: "Live",
+  building: "In progress",
+  done: "Finished",
+};
+
+export interface ChapterBeats {
+  problem: string;
+  built: string;
+  now: string;
+}
+
+export interface Chapter {
+  number: number;
+  /** Plain-language title shown on the map and the book page. */
+  chapterTitle: string;
+  /** References Project.slug. Usually one; the "Two school projects" stop has two. */
+  projectSlugs: string[];
+  status: ChapterStatus;
+  beats: ChapterBeats;
+  stat?: { value: string; label: string };
+  screenshotStatus: ScreenshotStatus;
+}
+
+export const chapters: Chapter[] = [
+  {
+    number: 1,
+    chapterTitle: "Internet for my building",
+    projectSlugs: ["residential-isp"],
+    status: "live",
+    beats: {
+      problem: "The building I live in had no reliable internet.",
+      built:
+        "I planned it, ran the cables, and set up Wi-Fi across all three floors myself, from the main " +
+        "router down to every access point.",
+      now:
+        "30 people use it every day. It's been running since January 2025, and I'm the one they call " +
+        "when something breaks.",
+    },
+    stat: { value: "30 people", label: "online since Jan 2025" },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 2,
+    chapterTitle: "Design and social media",
+    projectSlugs: ["brand-and-media"],
+    status: "live",
+    beats: {
+      problem: "Two schools in Nairobi needed to look good online and on the road, but nobody was handling it.",
+      built:
+        "I designed their vehicle wraps, posters, and marketing material, and I run their social media " +
+        "pages: planning, photos, video, and posting.",
+      now: "Still doing it, since 2024.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 3,
+    chapterTitle: "A system for a driving school",
+    projectSlugs: ["bidii-driving-school-mis"],
+    status: "building",
+    beats: {
+      problem: "A driving school in Nairobi kept track of students, licences, and fees on paper.",
+      built:
+        "I wrote a full plan for the system first, then started building it: student sign-up, licence " +
+        "tracking, fee records in shillings, and SMS reminders.",
+      now: "In progress, for a real client.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 4,
+    chapterTitle: "Two school projects",
+    projectSlugs: ["mwirigo-emergency-reporting-system", "safaricom-plp-mern-capstone"],
+    status: "done",
+    beats: {
+      problem:
+        "In Mwirigo, people reported fires and emergencies by phone and word of mouth, so help was slow " +
+        "to arrive. And my coding course needed a final project that proved I could build a full app.",
+      built:
+        "With Venessa Nyaboke, I built a site where residents report an emergency with their location, " +
+        "so responders see it all in one place. For the course, I built a complete web app, from the " +
+        "database to the screen.",
+      now: "Both finished.",
+    },
+    screenshotStatus: "text-only",
+  },
+  {
+    number: 5,
+    chapterTitle: "A helpdesk with AI help",
+    projectSlugs: ["ai-powered-helpdesk"],
+    status: "done",
+    beats: {
+      problem: "When support requests pile up, it's hard to know which ones matter most.",
+      built:
+        "A support ticket system where AI sorts requests, summarises them, and drafts replies. A person " +
+        "always reads and approves a reply before it's sent.",
+      now: "Finished. It's the first project where I used AI to do real work, with a human always in charge.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 6,
+    chapterTitle: "An app for landlords",
+    projectSlugs: ["nyumbani"],
+    status: "live",
+    beats: {
+      problem:
+        "Landlords with several buildings track rent in notebooks and WhatsApp chats, and struggle to " +
+        "match M-Pesa payments to the right tenant.",
+      built:
+        "A private app where landlords see every tenant's rent, M-Pesa payments are matched " +
+        "automatically, tenants sign up with a code, repairs are logged with photos, and late payers get " +
+        "SMS reminders.",
+      now: "Live. Landlords join by invitation only.",
+    },
+    screenshotStatus: "ready",
+  },
+  {
+    number: 7,
+    chapterTitle: "A private money tracker",
+    projectSlugs: ["unadoo"],
+    status: "building",
+    beats: {
+      problem: "I wanted to see where my money goes without giving an app my messages or my bank details.",
+      built:
+        "An Android app that reads my M-Pesa messages, sorts my spending into categories, tracks my " +
+        "habits, and shows me how the two connect. Everything stays on my phone.",
+      now:
+        "In progress. It installs directly, not from the Play Store, because Google limits apps that read SMS.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 8,
+    chapterTitle: "My savings planner",
+    projectSlugs: ["wealth-track"],
+    status: "building",
+    beats: {
+      problem: "Most budgeting apps assume the same salary every month. My income isn't like that.",
+      built:
+        "A personal planner that starts from a savings goal and works backwards, splits every payment I " +
+        "receive into set portions, and keeps a permanent record of where each shilling went. It gets my " +
+        "spending data straight from my money tracker.",
+      now:
+        "In progress, for my use only, so there's no public link. I've already tested it against common " +
+        "scams and fixed what I found.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 9,
+    chapterTitle: "A laundry delivery app",
+    projectSlugs: ["dobi-go"],
+    status: "live",
+    beats: {
+      problem:
+        "A laundry business in Zimmerman ran pickups and deliveries on phone calls and paper, so orders got lost.",
+      built:
+        "Customers book a pickup and follow their order on their phone. The shop gets a dashboard that " +
+        "even estimates drying time from the weather. Drivers can only close a delivery with a photo and " +
+        "an M-Pesa payment.",
+      now: "Running now with its first laundry, Maggy's in Zimmerman. More laundries are next.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 10,
+    chapterTitle: "A tool that tests security",
+    projectSlugs: ["loophole"],
+    status: "done",
+    beats: {
+      problem: "Code meant to keep attackers out often has gaps the person who wrote it can't see.",
+      built:
+        "A tool that uses AI to find a way past a piece of security code, runs it to prove the gap is " +
+        "real, and shows the one-line fix.",
+      now: "Finished, and built to present at a hackathon.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 11,
+    chapterTitle: "School van tracking",
+    projectSlugs: ["track-my-kid"],
+    status: "live",
+    beats: {
+      problem: "Parents put their children on a school van every morning with no way of knowing where it is.",
+      built:
+        "TrackMyKid shows parents where the van is and sends an alert the moment their child gets on, " +
+        "arrives at school, or gets home. Built for Jendie Automobiles.",
+      now: "Live.",
+    },
+    screenshotStatus: "pending",
+  },
+  {
+    number: 12,
+    chapterTitle: "Legal help, organised",
+    projectSlugs: ["katiba-os"],
+    status: "live",
+    beats: {
+      problem:
+        "People with legal problems have their evidence scattered across voice notes, M-Pesa messages, " +
+        "receipts, and chats.",
+      built:
+        "A platform that gathers that evidence into one clear case file, in English or Kiswahili, even " +
+        "from voice notes. A real legal professional reviews everything. The AI never decides or files " +
+        "anything by itself.",
+      now: "Working from start to finish, with a live demo.",
+    },
+    screenshotStatus: "ready",
+  },
+];
+
+/**
+ * The road map is split into short parts (like worlds in a level map) so it never
+ * becomes one endless scroll. Adding a project: add its chapter above, then put its
+ * number in the latest part, or start a new part once that one has about four stops.
+ */
+export interface StoryPart {
+  number: number;
+  title: string;
+  blurb: string;
+  chapterNumbers: number[];
+}
+
+export const storyParts: StoryPart[] = [
+  {
+    number: 1,
+    title: "First steps",
+    blurb: "Where it started: hands-on work for the people around me.",
+    chapterNumbers: [1, 2, 3, 4],
+  },
+  {
+    number: 2,
+    title: "Real products",
+    blurb: "Apps that real people and real money depend on.",
+    chapterNumbers: [5, 6, 7, 8],
+  },
+  {
+    number: 3,
+    title: "Bigger problems",
+    blurb: "Businesses, families, and justice.",
+    chapterNumbers: [9, 10, 11, 12],
+  },
+];
+
+export interface StoryEpilogue {
+  title: string;
+  paragraphs: string[];
+  teaser: string;
+}
+
+export const storyEpilogue: StoryEpilogue = {
+  title: "What ties it all together",
+  paragraphs: [
+    "These projects aren't separate. I build them all with the same system, which I call Rich OS: a " +
+      "shared set of plans and habits for how I scope a project, check it for security problems, and ship it.",
+    "I also keep a research library of 121 Kenyan apps and websites, from M-Pesa to eCitizen, noting what " +
+      "they do well, what makes people trust them, and which scams to watch out for. My newer projects " +
+      "are checked against it before they go live.",
+  ],
+  teaser:
+    "Next launch: helping traders in markets like Gikomba sell online, straight from WhatsApp, with no " +
+    "middlemen. Nothing live yet. Ask me about it.",
+};
+
+// --- About page: short, interactive sections instead of one long bio. ---
+
+export interface BeforeAfter {
+  label: string;
+  before: string;
+  after: string;
+  /** Story stop this came from, so the card can link to it. */
+  chapterNumber: number;
+}
+
+export const aboutPage = {
+  eyebrow: "About me",
+  headline: "I make slow things fast.",
+  intro:
+    "I'm Mwangi Rich Maina, a developer, network builder, and designer from Nairobi. I look for the " +
+    "jobs people still do the hard way, on paper, over phone calls, in endless WhatsApp threads, and " +
+    "I build the app that does it for them.",
+
+  beforeAfterTitle: "Before and after",
+  beforeAfterHint: "Flip the switch to see what changed.",
+  beforeAfter: [
+    {
+      label: "Collecting rent",
+      before: "A notebook, a WhatsApp group, and guessing which M-Pesa payment belongs to which tenant.",
+      after: "Payments matched to tenants automatically. Late payers get an SMS reminder.",
+      chapterNumber: 6,
+    },
+    {
+      label: "Laundry pickups",
+      before: "Phone calls, paper slips, and orders that went missing.",
+      after: "Book a pickup, follow the order, pay when it arrives. Nothing gets lost.",
+      chapterNumber: 9,
+    },
+    {
+      label: "The school van",
+      before: "Parents with no way of knowing where the van is, or if their child got on.",
+      after: "An alert the moment their child boards, arrives, or gets home.",
+      chapterNumber: 11,
+    },
+    {
+      label: "Building Wi-Fi",
+      before: "Three floors and no reliable internet.",
+      after: "30 people online every day, since January 2025.",
+      chapterNumber: 1,
+    },
+  ] satisfies BeforeAfter[],
+
+  processTitle: "How I work",
+  process: [
+    {
+      title: "Plan it",
+      text: "I map the real workflow first, with the people who do it. My driving school system started as a 40-page plan.",
+    },
+    {
+      title: "Build it",
+      text: "Simple tools that fit how people already work: M-Pesa, SMS, WhatsApp, the phone in their pocket.",
+    },
+    {
+      title: "Try to break it",
+      text: "Before launch I think like a scammer and an attacker, then fix everything I find.",
+    },
+    {
+      title: "Ship it and stay",
+      text: "I don't vanish after launch. When the building Wi-Fi drops, I'm still the one they call.",
+    },
+  ],
+
+  statsTitle: "By the numbers",
+  stats: [
+    { value: chapters.length, label: "projects on my road map" },
+    { value: 30, label: "people online on a network I built" },
+    { value: 121, label: "Kenyan apps I've studied for ideas" },
+    { value: 2, label: "institutions whose social media I run" },
+  ],
+
+  toolboxTitle: "My toolbox",
+  toolboxHint: "Open a drawer.",
+
+  trophiesTitle: "Trophies and training",
+
+  nowTitle: "Right now",
+  now: [
+    "Taking Dobi Go from one laundry to many.",
+    "Studying cybersecurity with Cyber Shujaa, finishing December 2026.",
+    "Finishing my IT diploma at KCA University, December 2026.",
+  ],
+
+  ctaTitle: "Got a messy workflow?",
+  ctaText: "Tell me what's slow. I'll tell you how I'd fix it.",
+  ctaButton: "Let's talk",
+};

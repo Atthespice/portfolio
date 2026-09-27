@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets (Resend key for api/problem.ts)
+.env
+.env.*
+!.env.example

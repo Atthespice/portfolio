@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ProjectCard } from "../components/ProjectCard";
 import { projects, projectCategories, type ProjectCategory } from "../content";
@@ -17,6 +18,12 @@ export function Projects() {
         <p className="mx-auto mt-3 max-w-xl text-sm text-mist/70">
           Client work, live infrastructure, academic builds and freelance collateral. Filter by category.
         </p>
+        <Link
+          to="/story"
+          className="mt-4 inline-block min-h-11 text-sm text-mist/60 underline-offset-4 hover:text-yellow hover:underline"
+        >
+          Prefer the story?
+        </Link>
       </div>
 
       <div className="mt-8 flex flex-wrap justify-center gap-2">

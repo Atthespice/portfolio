@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import { contacts, footerLine } from "../content";
+import { contacts, contactIntro } from "../content";
 import { GithubMark } from "../components/icons/GithubMark";
 
 const rows = [
@@ -13,7 +13,7 @@ export function Contact() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6">
       <h1 className="text-4xl font-black uppercase text-silver sm:text-6xl">Let's talk</h1>
-      <p className="mx-auto mt-4 max-w-md text-sm text-mist/75">{footerLine}</p>
+      <p className="mx-auto mt-4 max-w-md text-base text-mist/80">{contactIntro}</p>
 
       <a
         href={`mailto:${contacts.email}`}
