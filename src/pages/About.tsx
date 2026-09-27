@@ -2,9 +2,11 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import { animate, AnimatePresence, motion, useInView } from "framer-motion";
 import { ArrowRight, Award, GraduationCap, Hammer, Map, Rocket, ShieldAlert } from "lucide-react";
-import { aboutPage, techStack, certifications, education } from "../content";
+import { aboutPage, investTicker, techStack, certifications, education, pageTitles } from "../content";
+import { formatPrice, tickerGrowthPercent, tickerPrice } from "../lib/ticker";
 import { useReducedMotion } from "../lib/useReducedMotion";
-import aboutPhoto from "../assets/about-photo.jpeg";
+import aboutPhoto from "../assets/about-photo.webp";
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const processIcons = [Map, Hammer, ShieldAlert, Rocket];
 
@@ -65,10 +67,10 @@ function BeforeAfterCards() {
           onClick={() => setShowAfter((v) => !v)}
           className="flex min-h-11 flex-shrink-0 items-center gap-3 rounded-full border border-border bg-ink/60 p-1.5 text-sm font-bold"
         >
-          <span className={`rounded-full px-4 py-1.5 transition-colors ${showAfter ? "text-mist/50" : "bg-surface-2 text-mist"}`}>
+          <span className={`rounded-full px-4 py-1.5 transition-colors ${showAfter ? "text-mist/60" : "bg-surface-2 text-mist"}`}>
             Before
           </span>
-          <span className={`rounded-full px-4 py-1.5 transition-colors ${showAfter ? "bg-yellow text-ink" : "text-mist/50"}`}>
+          <span className={`rounded-full px-4 py-1.5 transition-colors ${showAfter ? "bg-yellow text-ink" : "text-mist/60"}`}>
             After
           </span>
         </button>
@@ -87,7 +89,7 @@ function BeforeAfterCards() {
                 aria-hidden={showAfter}
                 className="col-start-1 row-start-1 flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5 [backface-visibility:hidden]"
               >
-                <p className="text-xs font-bold uppercase tracking-widest text-mist/50">Before · {item.label}</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-mist/60">Before · {item.label}</p>
                 <p className="text-base leading-relaxed text-mist/70">{item.before}</p>
               </div>
               <div
@@ -187,6 +189,7 @@ function SectionTitle({ children }: { children: string }) {
 }
 
 export function About() {
+  useDocumentTitle(pageTitles.about);
   const reveal = useReveal();
 
   return (
@@ -299,7 +302,17 @@ export function About() {
 
         <motion.section {...reveal()} className="grid gap-10 md:grid-cols-2">
           <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-blue">{aboutPage.nowEyebrow}</p>
             <SectionTitle>{aboutPage.nowTitle}</SectionTitle>
+            <Link
+              to="/#invest"
+              className="mt-4 inline-flex min-h-11 flex-shrink-0 items-center gap-2 rounded-full border border-border px-4 text-sm font-bold tabular-nums transition-colors hover:border-yellow/60"
+            >
+              <span className="rounded bg-yellow px-1.5 py-0.5 text-xs text-ink">{investTicker.symbol}</span>
+              <span className="text-mist/70">{aboutPage.nowPriceLabel}</span>
+              <span className="text-mist">{formatPrice(tickerPrice)}</span>
+              <span className="text-yellow">▲{tickerGrowthPercent}%</span>
+            </Link>
             <ul className="mt-6 flex flex-col gap-4">
               {aboutPage.now.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-base text-mist/85">

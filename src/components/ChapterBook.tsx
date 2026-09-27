@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { chapters, chapterStatusLabels, projects } from "../content";
+import { chapters, chapterStatusLabels, investTicker, projects } from "../content";
 import { MediaSlot } from "./MediaSlot";
 import { ProjectActions } from "./ProjectActions";
 import { useReducedMotion } from "../lib/useReducedMotion";
@@ -187,7 +187,10 @@ export function ChapterBook({ chapterNumber, onClose, onNavigate }: ChapterBookP
                 {/* Right page: the story, in three plain steps. */}
                 <div className="book-page book-page-right flex flex-col p-6 sm:p-8 lg:max-h-[85svh] lg:overflow-y-auto">
                   <p className="text-xs font-semibold uppercase tracking-widest text-blue">
-                    Stop {chapter.number} of {chapters.length} · {chapterStatusLabels[chapter.status]}
+                    Stop {chapter.number} of {chapters.length} · {chapterStatusLabels[chapter.status]} ·{" "}
+                    <span className="text-yellow">
+                      {investTicker.storyMove} +{investTicker.moves[chapter.status]}
+                    </span>
                   </p>
                   <h2 id="book-title" className="mt-2 text-3xl font-black uppercase leading-tight text-silver">
                     {chapter.chapterTitle}
@@ -225,7 +228,7 @@ export function ChapterBook({ chapterNumber, onClose, onNavigate }: ChapterBookP
                       <ChevronLeft size={16} aria-hidden />
                       Previous
                     </button>
-                    <span className="text-xs text-mist/50">
+                    <span className="text-xs text-mist/60">
                       {chapter.number} / {chapters.length}
                     </span>
                     <button

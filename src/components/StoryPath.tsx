@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { chapterStatusLabels, projects, type Chapter, type ChapterStatus } from "../content";
+import { chapterStatusLabels, investTicker, projects, type Chapter, type ChapterStatus } from "../content";
 import { getProjectImage } from "../lib/projectImages";
 import { useReducedMotion } from "../lib/useReducedMotion";
 import { MediaSlot } from "./MediaSlot";
@@ -154,7 +154,12 @@ export function StoryPath({ chapters, onOpen, endStop }: StoryPathProps) {
                 </div>
                 <div className="mt-4 rounded-xl bg-ink/80 px-3 py-1.5 backdrop-blur-sm">
                   <p className="text-sm font-bold leading-snug text-mist">{chapter.chapterTitle}</p>
-                  <p className={`mt-0.5 text-xs font-semibold ${textByStatus[chapter.status]}`}>{statusLabel}</p>
+                  <p className={`mt-0.5 text-xs font-semibold ${textByStatus[chapter.status]}`}>
+                    {statusLabel}
+                    <span className="ml-1.5 rounded bg-yellow/15 px-1 text-yellow">
+                      {investTicker.symbol} +{investTicker.moves[chapter.status]}
+                    </span>
+                  </p>
                 </div>
               </div>
             </motion.li>

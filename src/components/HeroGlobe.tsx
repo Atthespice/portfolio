@@ -1,10 +1,14 @@
-import { useRef, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Globe } from "./Globe";
 import { RMEmblem } from "./RMEmblem";
 import { useReducedMotion } from "../lib/useReducedMotion";
-import faceImage from "../assets/face.jpeg";
+import faceImage from "../assets/face.webp";
+
+// The WebGL globe library is the heaviest thing on Home. Loading it as its own file lets
+// the headline and problem box show first on slow mobile data, with a same-size empty
+// circle holding the space until the globe arrives.
+const Globe = lazy(() => import("./Globe").then((module) => ({ default: module.Globe })));
 
 function PhotoPin() {
   return (
@@ -54,7 +58,9 @@ export function HeroGlobe({ label, className = "w-full max-w-[min(540px,88vw)]" 
           if (launching) navigate("/story");
         }}
       >
-        <Globe pin={<PhotoPin />} />
+        <Suspense fallback={<div className="aspect-square w-full rounded-full bg-surface/40" />}>
+          <Globe pin={<PhotoPin />} />
+        </Suspense>
       </motion.button>
 
       {launching && (

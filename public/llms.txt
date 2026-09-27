@@ -1,0 +1,7 @@
+# Rich Maina
+
+> Developer from Nairobi, Kenya. Builds apps that replace slow, manual work for Kenyan businesses: rent collection (M-Pesa matching, SMS reminders), laundry delivery, school van tracking, and more. Also builds and runs building Wi-Fi networks.
+
+- [Story](https://portfolio-at-the-spice.vercel.app/story): every project in order, with the problem, what was built, and where it is now
+- [About](https://portfolio-at-the-spice.vercel.app/about): skills, tools, training, and what's coming next
+- [Contact](https://portfolio-at-the-spice.vercel.app/contact): email richmaina0@gmail.com

@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ProjectCard } from "../components/ProjectCard";
-import { projects, projectCategories, type ProjectCategory } from "../content";
+import { projects, projectCategories, type ProjectCategory, pageTitles } from "../content";
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 type Filter = ProjectCategory | "All";
 
 export function Projects() {
+  useDocumentTitle(pageTitles.projects);
   const [filter, setFilter] = useState<Filter>("All");
 
   const visible = filter === "All" ? projects : projects.filter((p) => p.category === filter);

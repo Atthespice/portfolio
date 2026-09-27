@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { TickerPill } from "./InvestTicker";
 
 const links = [
   { to: "/", label: "Home" },
@@ -31,7 +32,13 @@ export function Navbar() {
           RM<span className="text-yellow">.</span>
         </Link>
 
+        {/* On phones the pill sits next to the hamburger; on wider screens it leads the link row. */}
+        <div className="ml-auto mr-1 sm:hidden">
+          <TickerPill onNavigate={() => setOpen(false)} />
+        </div>
+
         <div className="hidden sm:flex sm:items-center sm:gap-1">
+          <TickerPill />
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} className={linkClass} end={link.to === "/"}>
               {link.label}

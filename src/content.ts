@@ -40,7 +40,13 @@ export const problemBox = {
   sent: "Got it, thank you. I read every one.",
   sentWithContact: "Got it, thank you. I'll be in touch.",
   error: "That didn't go through.",
-  privacy: "Goes straight to my inbox. Nothing is shared.",
+  privacy: "By sending, you agree I can read it and reply. Nothing is shared.",
+  privacyMore: "What happens to it?",
+  privacyNote: [
+    "I only get what you type here: your message and, if you add one, a phone number or email.",
+    "It's emailed to me through Resend, a mail service based in the US, so it leaves Kenya on the way. It isn't saved on this website, sold, or shared, and I only use it to reply to you.",
+    "Want it deleted? Email me and I'll delete it from my inbox. This follows Kenya's Data Protection Act, 2019.",
+  ],
 };
 
 export const homeCopy = {
@@ -52,6 +58,22 @@ export const homeCopy = {
 
 export const footerLine =
   "Ambitious by nature and methodical by practice. Open to freelance work.";
+
+/** Browser-tab titles, one per page. */
+export const pageTitles = {
+  home: "Rich Maina | Developer in Nairobi",
+  story: "Story | Rich Maina",
+  projects: "All projects | Rich Maina",
+  about: "About | Rich Maina",
+  contact: "Contact | Rich Maina",
+  notFound: "Page not found | Rich Maina",
+};
+
+export const notFoundCopy = {
+  title: "This stop isn't on the map",
+  text: "The page you're looking for doesn't exist, or it moved.",
+  button: "Back to the start",
+};
 
 export const contactIntro =
   "Got a job that still runs on paper, phone calls, or a very busy WhatsApp group? Tell me what's slow, and I'll tell you how I'd fix it.";
@@ -402,6 +424,7 @@ export type HeroCalloutIcon = "apps" | "ai" | "place";
 
 export const worldSection = {
   title: "A world through my lens",
+  tagline: "Everyone has an idea. I turn it into reality.",
   globeLabel: "Start the journey: see everything I've built",
   tapTitle: "Tap the globe",
   tapText: "Fly into my projects",
@@ -766,7 +789,9 @@ export const aboutPage = {
 
   trophiesTitle: "Trophies and training",
 
-  nowTitle: "Right now",
+  nowEyebrow: "$RICH earnings report",
+  nowTitle: "What's coming next",
+  nowPriceLabel: "Price today",
   now: [
     "Taking Dobi Go from one laundry to many.",
     "Studying cybersecurity with Cyber Shujaa, finishing December 2026.",
@@ -776,4 +801,48 @@ export const aboutPage = {
   ctaTitle: "Got a messy workflow?",
   ctaText: "Tell me what's slow. I'll tell you how I'd fix it.",
   ctaButton: "Let's talk",
+};
+
+// --- $RICH: the "invest in me" ticker on Home, with a pill in the navbar on every page. ---
+// The price isn't made up: it's rebuilt from the Story stops above, so it only goes up
+// when a real project moves. Change a chapter's status and the chart follows.
+
+export const investTicker = {
+  symbol: "$RICH",
+  name: "Rich Maina",
+  exchange: "Nairobi",
+  eyebrow: "Invest in me",
+  title: "Get in early",
+  intro:
+    "Bitcoin was cheap once, too. My price is built from real work: every project on my road map " +
+    "moves it. Drag across the chart to see what moved it and when.",
+  startLabel: "Where I started",
+  /** Index points each Story stop adds, by status. */
+  moves: { live: 40, done: 25, building: 15 } satisfies Record<ChapterStatus, number>,
+  startPrice: 100,
+  howTitle: "What moves the price",
+  howItems: [
+    { status: "live", text: "It goes live and people use it" },
+    { status: "done", text: "It's finished and handed over" },
+    { status: "building", text: "It's being built right now" },
+  ] satisfies { status: ChapterStatus; text: string }[],
+  sinceStart: "since stop 1",
+  investTitle: "How to buy in",
+  invest: [
+    { kind: "hire", title: "Hire me", text: "Bring a project. Pays off for both of us." },
+    { kind: "problem", title: "Send a problem", text: "Tell me what's slow. It costs nothing." },
+    { kind: "share", title: "Share my site", text: "One WhatsApp share is a strong buy signal." },
+  ] satisfies { kind: "hire" | "problem" | "share"; title: string; text: string }[],
+  shareText: "Check out Rich Maina's work, a developer in Nairobi who makes slow things fast:",
+  disclaimer:
+    "Just for fun. $RICH isn't a coin, share or token, and I will never ask you to send money to " +
+    "\"invest\". If anyone does in my name, it's a scam.",
+  pillLabel: "See my $RICH chart",
+  /** Dashed "coming next" point after the last stop. Priced as if it goes live. */
+  upcoming: {
+    label: "Coming next: Gikomba traders selling on WhatsApp",
+    note: "Not live yet. Worth +40 the day it launches.",
+    link: "Read about it",
+  },
+  storyMove: "moved $RICH",
 };

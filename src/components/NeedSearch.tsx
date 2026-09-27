@@ -115,7 +115,7 @@ export function NeedSearch() {
       ) : (
         <form onSubmit={onSubmit} aria-labelledby="problem-box-heading" className="glass-panel rounded-3xl p-5 sm:p-6">
           <div className="flex items-start gap-3 rounded-2xl border-2 border-border bg-ink/50 px-4 py-2 focus-within:border-yellow">
-            <Search size={18} className="mt-3 flex-shrink-0 text-mist/50" aria-hidden />
+            <Search size={18} className="mt-3 flex-shrink-0 text-mist/60" aria-hidden />
             <textarea
               id="problem-input"
               value={problem}
@@ -128,7 +128,7 @@ export function NeedSearch() {
               rows={4}
               maxLength={1500}
               data-own-focus
-              className="min-h-11 w-full flex-1 resize-none bg-transparent py-2.5 text-base text-mist placeholder:text-mist/40"
+              className="min-h-11 w-full flex-1 resize-none bg-transparent py-2.5 text-base text-mist placeholder:text-mist/55"
             />
           </div>
 
@@ -184,7 +184,7 @@ export function NeedSearch() {
               placeholder={problemBox.contactPlaceholder}
               maxLength={200}
               autoComplete="email"
-              className="mt-2 block min-h-11 w-full rounded-full border border-border bg-ink/50 px-5 text-base text-mist placeholder:text-mist/40"
+              className="mt-2 block min-h-11 w-full rounded-full border border-border bg-ink/50 px-5 text-base text-mist placeholder:text-mist/55"
             />
           </label>
 
@@ -199,6 +199,18 @@ export function NeedSearch() {
               {status === "sending" ? problemBox.sending : problemBox.send}
             </button>
           </div>
+
+          {/* Plain-words privacy note: what's collected, why, where it goes, how to delete it. */}
+          <details className="group mt-3 text-center text-xs text-mist/55 sm:text-left">
+            <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold text-mist/70 hover:text-yellow">
+              {problemBox.privacyMore}
+            </summary>
+            <ul className="mt-1 flex flex-col gap-1.5 text-left leading-relaxed">
+              {problemBox.privacyNote.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </details>
 
           {status === "error" && (
             <p role="alert" className="mt-3 text-center text-sm text-yellow">

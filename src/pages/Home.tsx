@@ -1,15 +1,25 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Mail, BookOpen, MessageSquareText } from "lucide-react";
 import { Marquee } from "../components/Marquee";
 import { CharReveal } from "../components/CharReveal";
 import { NeedSearch } from "../components/NeedSearch";
 import { HeroGlobe } from "../components/HeroGlobe";
+import { InvestTicker } from "../components/InvestTicker";
 import { HeroCalloutsCompact, HeroCalloutsLeft, HeroCalloutsRight } from "../components/HeroCallouts";
 import { useReducedMotion } from "../lib/useReducedMotion";
-import { homeCopy, services, contacts, worldSection } from "../content";
+import { homeCopy, services, contacts, worldSection, pageTitles } from "../content";
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 export function Home() {
+  useDocumentTitle(pageTitles.home);
   const reducedMotion = useReducedMotion();
+  const { hash } = useLocation();
+
+  // Arriving from another page via /#invest (the navbar $RICH pill): jump to that section.
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+  }, [hash]);
 
   // "Tell me your problem": bring the text box itself to the middle of the screen (not the
   // section top, which on phones is the explanation) and put the cursor in it.
@@ -42,12 +52,13 @@ export function Home() {
         >
           HI, I'M <span className="text-yellow" style={{ WebkitTextFillColor: "initial" }}>RICH</span>
         </h1>
+        <p className="relative z-10 mt-3 text-center text-base font-semibold text-mist sm:text-xl">{worldSection.tagline}</p>
 
         <div className="relative z-0 mx-auto -mt-[2vw] grid w-full max-w-6xl items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
           <HeroCalloutsLeft />
           <div className="flex flex-col items-center">
             <HeroGlobe label={worldSection.globeLabel} className="w-[min(440px,82vw,50svh)]" />
-            <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-mist/50 lg:hidden">
+            <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-mist/60 lg:hidden">
               {worldSection.tapTitle}: {worldSection.tapText.toLowerCase()}
             </p>
           </div>
@@ -79,6 +90,11 @@ export function Home() {
       {/* "What's slowing your work down?" box: explanation on one side, the box on the other. */}
       <section id="problem-box" className="scroll-mt-16 px-4 py-20 sm:px-6">
         <NeedSearch />
+      </section>
+
+      {/* $RICH: "invest in me", a stock chart built from the real Story stops. */}
+      <section id="invest" aria-labelledby="invest-heading" className="scroll-mt-16 px-4 pb-20 sm:px-6">
+        <InvestTicker onSendProblem={goToProblemBox} />
       </section>
 
       {/* Scroll-driven marquee, §2/§4 */}

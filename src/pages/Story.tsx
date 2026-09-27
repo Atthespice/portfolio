@@ -2,10 +2,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowRight, Rocket } from "lucide-react";
-import { chapters, storyEpilogue, storyParts } from "../content";
+import { chapters, storyEpilogue, storyParts, pageTitles } from "../content";
 import { StoryPath, type EndStop } from "../components/StoryPath";
 import { ChapterBook } from "../components/ChapterBook";
 import { useReducedMotion } from "../lib/useReducedMotion";
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 function chapterFromHash(hash: string): number | null {
   const match = hash.match(/^#chapter-(\d+)$/);
@@ -19,6 +20,7 @@ function partOf(chapterNumber: number): number {
 }
 
 export function Story() {
+  useDocumentTitle(pageTitles.story);
   const location = useLocation();
   const reducedMotion = useReducedMotion();
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -50,6 +52,9 @@ export function Story() {
     if (n !== null) {
       setOpenNumber(n);
       setActivePart(partOf(n));
+    } else if (location.hash === "#epilogue") {
+      // The $RICH chart's "coming next" point links here.
+      requestAnimationFrame(() => document.getElementById("epilogue")?.scrollIntoView());
     }
   }, [location.hash]);
 
@@ -152,7 +157,7 @@ export function Story() {
           </AnimatePresence>
         </div>
 
-        <section className="mx-auto flex max-w-3xl flex-col gap-6 px-4 pb-32 pt-10 sm:px-6" aria-labelledby="epilogue-heading">
+        <section id="epilogue" className="mx-auto flex max-w-3xl scroll-mt-16 flex-col gap-6 px-4 pb-32 pt-10 sm:px-6" aria-labelledby="epilogue-heading">
           <h2 id="epilogue-heading" className="text-center text-3xl font-black uppercase text-silver sm:text-4xl">
             {storyEpilogue.title}
           </h2>

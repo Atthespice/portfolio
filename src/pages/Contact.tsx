@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import { contacts, contactIntro } from "../content";
+import { contacts, contactIntro, pageTitles } from "../content";
 import { GithubMark } from "../components/icons/GithubMark";
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const rows = [
   { icon: Mail, label: contacts.email, href: `mailto:${contacts.email}` },
@@ -10,6 +11,7 @@ const rows = [
 ];
 
 export function Contact() {
+  useDocumentTitle(pageTitles.contact);
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6">
       <h1 className="text-4xl font-black uppercase text-silver sm:text-6xl">Let's talk</h1>
