@@ -48,6 +48,21 @@ itself still lives at `/projects` as a fast fallback, linked from the top of `/s
 Chapter content lives in `content.ts` (`chapters`, `storyEpilogue`), same rule as
 everything else: no copy in component code.
 
+## $RICH: the "invest in me" ticker
+
+A stock-style chart on Home (and a pill in the navbar on every page) that turns the Story
+road map into a running price. It's not a real coin or share, just a fun way to say "get
+in early": the price is rebuilt from each stop's status in `content.ts` (`chapters`), so it
+only moves when a real project moves. Price logic lives in `src/lib/ticker.ts`, copy and
+the point values in `content.ts`'s `investTicker`, UI in `src/components/InvestTicker.tsx`.
+
 ## Deployment
 
 See `IMPLEMENTATION_AND_HOSTING.md` for how this was built and how to deploy it to Vercel.
+Vercel's **Deployment Protection** must be disabled (Settings → Deployment Protection) for
+the site to actually be public, otherwise every URL redirects to a Vercel login page.
+
+## Progress log
+
+`PROGRESS.md` is a dated running log of what changed, what's blocked, and what's next.
+Add an entry there each session instead of only saying it in chat.
