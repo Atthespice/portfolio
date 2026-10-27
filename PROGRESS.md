@@ -1,5 +1,18 @@
 # Progress
 
+### 2026-10-28
+- **Dobi Go is now anika** (slug `anika`): the PHP build was retired on 2026-09-27 for a
+  React + Supabase offline-first PWA that replaces the laundry notebook. Card, Story stop 9,
+  the About before/after and "coming next" copy rewritten to match. Live link
+  https://anika.co.ke (public landing page).
+- **Bidii is live**: live link https://bidiidrivingschool.co.ke, Story stop 3 moved from
+  `building` to `live` (so `$RICH` rises by 25), stack corrected to Next.js on Cloudflare
+  Workers. Dropped "SMS reminders" / Africa's Talking: not built in Bidii yet.
+- Live links checked: anika, Bidii, Katiba OS, TrackMyKid return 200. **Nyumbani's link
+  (`nyumbani-8jusljhtu-at-the-spice.vercel.app`) now returns 404**: a per-deployment Vercel
+  URL that no longer exists. Needs the project's current production URL.
+- Deployment Protection is off: the portfolio itself returns 200 publicly.
+
 ### 2026-09-27
 - Rebuilt Home around a story: globe hero (photo pinned to Nairobi, click to "launch" into
   `/story`), a chaptered road-map replacing the old scrolling project marquee, a new

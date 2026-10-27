@@ -200,14 +200,24 @@ export const projects: Project[] = [
     slug: "bidii-driving-school-mis",
     name: "Bidii Driving School MIS",
     category: "Client",
-    role: "Client · Academic capstone",
+    role: "Client · Live system (Meru and Nairobi branches)",
     description:
-      "Full management information system for a Nairobi driving school: student registration, " +
-      "NTSA PDL/IDL licence tracking, fee management in KES, and SMS notifications, backed " +
-      "by a 40-page IEEE/ISO-standard SRS.",
-    stack: ["React", "Vite", "Supabase", "PostgreSQL", "Auth", "Africa's Talking SMS"],
+      "Management system and public website for a driving school with branches in Meru and " +
+      "Nairobi: student registration, NTSA PDL and driving test tracking, fees in KES with " +
+      "printed receipts, a lesson queue for instructors, and an end-of-day cash-up the manager " +
+      "gets on WhatsApp. Each role (front desk, instructor, branch manager, owner) sees only what " +
+      "it should, enforced in the database. Started as a 40-page IEEE/ISO-standard SRS.",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Supabase (PostgreSQL, Auth, RLS)",
+      "Tailwind CSS",
+      "Cloudflare Workers",
+      "Resend",
+    ],
     repoUrl: null,
-    liveUrl: null,
+    liveUrl: "https://bidiidrivingschool.co.ke",
     featured: true,
   },
   {
@@ -370,20 +380,23 @@ export const projects: Project[] = [
     ownerNote: "No public live link by design: handles real personal financial data. Repo is private.",
   },
   {
-    slug: "dobi-go",
-    name: "Dobi Go",
+    slug: "anika",
+    name: "anika",
     category: "Client",
     role: "Client · Live pilot (Zimmerman, Nairobi)",
     description:
-      "Pickup-and-delivery laundry platform. A customer PWA with phone/OTP sign-in and live order " +
-      "tracking, an ops console with a weather-driven sun-dry estimate, and a delivery-agent app where " +
-      "a drop-off closes only on photo evidence plus a real-time M-Pesa payment.",
-    stack: ["PHP", "MySQL", "PDO", "Guzzle", "PWA", "WhatsApp Business API", "Safaricom Daraja (M-Pesa)"],
+      "A phone-first app that replaces the notebook for Kenyan laundry operators, from mama fua to " +
+      "small laundromats. Orders, garment counts, a one-tap queue from washing to ready, payments, " +
+      "and supplies, built for basic Android phones on patchy data: it keeps working offline and " +
+      "syncs when the signal comes back. Sign-in is by phone code, and each laundry only ever sees " +
+      "its own data.",
+    stack: ["React", "Vite", "TypeScript", "Supabase (PostgreSQL, Auth, RLS)", "Dexie (offline)", "PWA", "Tailwind CSS", "Cloudflare Workers"],
     repoUrl: null,
-    liveUrl: null,
+    liveUrl: "https://anika.co.ke",
     featured: false,
     badge: "Live pilot, Zimmerman",
-    ownerNote: "No public live link: real customer orders and payments. Not yet pushed to a GitHub repo.",
+    ownerNote:
+      "Formerly Dobi Go (PHP build, retired 2026-09-27). Live link is the public landing page; the app itself needs a laundry's sign-in.",
   },
   {
     slug: "loophole",
@@ -503,13 +516,14 @@ export const chapters: Chapter[] = [
     number: 3,
     chapterTitle: "A system for a driving school",
     projectSlugs: ["bidii-driving-school-mis"],
-    status: "building",
+    status: "live",
     beats: {
-      problem: "A driving school in Nairobi kept track of students, licences, and fees on paper.",
+      problem: "A driving school with branches in Meru and Nairobi kept track of students, licences, and fees in books.",
       built:
-        "I wrote a full plan for the system first, then started building it: student sign-up, licence " +
-        "tracking, fee records in shillings, and SMS reminders.",
-      now: "In progress, for a real client.",
+        "I wrote a full plan for the system first, then built it: student sign-up, licence and test " +
+        "tracking, fees and printed receipts in shillings, a lesson queue for instructors, an end-of-day " +
+        "cash-up sent to the manager on WhatsApp, and the school's public website.",
+      now: "Live at bidiidrivingschool.co.ke, with the front desk and instructors moving onto it.",
     },
     screenshotStatus: "pending",
   },
@@ -595,17 +609,16 @@ export const chapters: Chapter[] = [
   },
   {
     number: 9,
-    chapterTitle: "A laundry delivery app",
-    projectSlugs: ["dobi-go"],
+    chapterTitle: "A laundry app called anika",
+    projectSlugs: ["anika"],
     status: "live",
     beats: {
       problem:
-        "A laundry business in Zimmerman ran pickups and deliveries on phone calls and paper, so orders got lost.",
+        "A laundry in Zimmerman ran everything from a notebook: who brought what, what's washed, who has paid. Orders got lost.",
       built:
-        "Customers book a pickup and follow their order on their phone. The shop gets a dashboard that " +
-        "even estimates drying time from the weather. Drivers can only close a delivery with a photo and " +
-        "an M-Pesa payment.",
-      now: "Running now with its first laundry, Maggy's in Zimmerman. More laundries are next.",
+        "anika, an app on the phone the laundry already has. Every order, garment count, and payment goes in " +
+        "with a tap, washing to ready moves with one more, and it keeps working when the data runs out.",
+      now: "Live at anika.co.ke with its first laundry, Maggy's in Zimmerman. More laundries are next.",
     },
     screenshotStatus: "pending",
   },
@@ -737,9 +750,9 @@ export const aboutPage = {
       chapterNumber: 6,
     },
     {
-      label: "Laundry pickups",
-      before: "Phone calls, paper slips, and orders that went missing.",
-      after: "Book a pickup, follow the order, pay when it arrives. Nothing gets lost.",
+      label: "Running a laundry",
+      before: "A notebook, paper slips, and orders that went missing.",
+      after: "Every order and payment on the phone, even offline. Nothing gets lost.",
       chapterNumber: 9,
     },
     {
@@ -793,7 +806,7 @@ export const aboutPage = {
   nowTitle: "What's coming next",
   nowPriceLabel: "Price today",
   now: [
-    "Taking Dobi Go from one laundry to many.",
+    "Taking anika from one laundry to many.",
     "Studying cybersecurity with Cyber Shujaa, finishing December 2026.",
     "Finishing my IT diploma at KCA University, December 2026.",
   ],

@@ -15,7 +15,7 @@ const projectsDir = join(__dirname, "..", "src", "assets", "projects");
 /** @type {Record<string, string>} slug -> source screenshot path (~ expands to $HOME) */
 const MANIFEST = {
   // "wealth-track": "~/Projects/Wealth Track/screenshots/dashboard.png",
-  // "dobi-go": "~/Projects/Dobi Go/screenshots/ops-console.png",
+  // "anika": "~/projects/anika/screenshots/queue.png",
   // "loophole": "~/Projects/LoopHole/screenshots/demo.png",
   // "track-my-kid": "~/Projects/Track My Kid/assets/img/hero.png",
 };
