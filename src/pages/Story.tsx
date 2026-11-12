@@ -134,7 +134,7 @@ export function Story() {
                   </span>
                   <span>
                     <span className={`block text-sm font-bold ${active ? "text-yellow" : "text-mist"}`}>{p.title}</span>
-                    <span className="block text-xs text-mist/55">{p.chapterNumbers.length} stops</span>
+                    <span className="block text-xs text-mist/55">{p.chapterNumbers.length} {p.chapterNumbers.length === 1 ? "stop" : "stops"}</span>
                   </span>
                 </button>
               );

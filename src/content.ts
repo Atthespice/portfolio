@@ -52,7 +52,7 @@ export const problemBox = {
 export const homeCopy = {
   aboutTeaser: "I find the slow, messy way something gets done, and build the app that makes it fast.",
   servicesTitle: "What I can do for you",
-  journeyEyebrow: "12 stops and counting",
+  journeyEyebrow: "13 stops and counting",
   journeyTitle: "Take the full journey",
 };
 
@@ -426,6 +426,24 @@ export const projects: Project[] = [
     liveUrl: "https://trackmykid.co.ke",
     featured: false,
   },
+  {
+    slug: "jendie-website",
+    name: "Jendie Automobiles Website",
+    category: "Client",
+    role: "Client · Live website (jendie.co.ke)",
+    description:
+      "Public website for an NTSA-approved speed governor, tracker and dashcam company with offices in " +
+      "Kenya, Rwanda and Zimbabwe. The old site's code was lost, so I rebuilt it from scratch. The " +
+      "homepage changes with the Kenyan calendar (short rains, Mashujaa Day, Christmas) from one file " +
+      "staff can edit without a rebuild, shows whether the office is open right now, sends plate checks " +
+      "straight to WhatsApp, and links to the company's tracking, NTSA and certificate platforms. " +
+      "Kiswahili greetings and road-safety slogans, dark mode, and a deploy script that backs up first " +
+      "and never touches the back office on the same server.",
+    stack: ["Astro", "TypeScript", "CSS", "JavaScript", "Apache", "Bash"],
+    repoUrl: null,
+    liveUrl: "https://jendie.co.ke",
+    featured: false,
+  },
 ];
 
 export const projectCategories: ProjectCategory[] = ["Client", "Group", "Academic", "Infrastructure", "Freelance"];
@@ -667,6 +685,23 @@ export const chapters: Chapter[] = [
     },
     screenshotStatus: "ready",
   },
+  {
+    number: 13,
+    chapterTitle: "A website that follows the calendar",
+    projectSlugs: ["jendie-website"],
+    status: "live",
+    beats: {
+      problem:
+        "Jendie Automobiles' website was frozen. The code behind it had been lost, so nobody could change a word.",
+      built:
+        "I rebuilt it from scratch. It changes with Kenya, from the short rains to Mashujaa Day to Christmas, " +
+        "tells you if the office is open right now, and puts a plate check one tap from WhatsApp. Staff can " +
+        "change the season's message without touching code.",
+      now: "Live since November 2026.",
+    },
+    stat: { value: "5 offices", label: "in 3 countries, one website" },
+    screenshotStatus: "ready",
+  },
 ];
 
 /**
@@ -699,6 +734,12 @@ export const storyParts: StoryPart[] = [
     title: "Bigger problems",
     blurb: "Businesses, families, and justice.",
     chapterNumbers: [9, 10, 11, 12],
+  },
+  {
+    number: 4,
+    title: "Going public",
+    blurb: "Websites a whole company is judged by.",
+    chapterNumbers: [13],
   },
 ];
 

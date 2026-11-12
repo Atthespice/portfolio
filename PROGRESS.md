@@ -1,5 +1,14 @@
 # Progress
 
+### 2026-11-12
+- **Jendie Automobiles website added** (slug `jendie-website`, Client, live link https://jendie.co.ke):
+  the rebuild of their public site in Astro, live since 2026-11-12. New Story stop 13 "A website that
+  follows the calendar" (`live`, so `$RICH` rises by 40, now about ▲425%), in a new Story part 4
+  "Going public" since part 3 already had four stops. Home eyebrow now says "13 stops".
+- Cover is a screenshot of the live homepage (short rains season), `src/assets/projects/jendie-website/cover.jpg`.
+- Story part picker now says "1 stop" instead of "1 stops".
+- Kept out on purpose: anything about the server, back office internals or security work for the client.
+
 ### 2026-10-28
 - **Dobi Go is now anika** (slug `anika`): the PHP build was retired on 2026-09-27 for a
   React + Supabase offline-first PWA that replaces the laundry notebook. Card, Story stop 9,
